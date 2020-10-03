@@ -398,13 +398,13 @@ window.onload = function() {
   })
 })(jQuery);
 
-hash = function(h){
-  if (history.pushState){
-    history.pushState(null, null, h);
-  }else{
-    location.hash = h;
-  }
-}
+// hash = function(h){
+//   if (history.pushState){
+//     history.pushState(null, null, h);
+//   }else{
+//     location.hash = h;
+//   }
+// }
 
 
 (function($){
