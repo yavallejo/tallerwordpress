@@ -1,68 +1,72 @@
 <?php get_header();  ?>
 
-<section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
-	<div class="container">
-		<div class="row d-flex no-gutters">
-			<div class="col-md-6 col-lg-6 d-flex">
-				<div class="img-about img d-flex align-items-stretch">
-					<div class="overlay"></div>
-					<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(<?php echo the_field('imagen_de_perfil', 9); ?>">
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-6 pl-md-5 py-5">
-				<div class="row justify-content-start pb-3">
-					<div class="col-md-12 heading-section ftco-animate">
-						<h1 class="big">About</h1>
-						<h2 class="mb-4">About Me</h2>
-
-						<?php if (get_field('biografia', 9)) : ?>
-							<p><?php echo get_field('biografia', 9); ?></p>
-						<?php endif; ?>
-
-
-						<ul class="about-info mt-4 px-md-0 px-2">
-							<?php if (get_field('nombre', 9)) : ?>
-								<li class="d-flex"><span>Nombre:</span> <span><?php echo get_field('nombre', 9); ?></span></li>
-							<?php endif; ?>
-
-							<?php if (get_field('fecha_de_nacimiento', 9)) : ?>
-								<li class="d-flex"><span>Fecha de nacimiento:</span> <span>
-										<?php the_field('fecha_de_nacimiento', 9); ?></span></li>
-							<?php endif; ?>
-
-							<?php if (get_field('direccion', 9)) : ?>
-
-								<li class="d-flex"><span>Address:</span> <span><?php echo get_field('direccion', 9); ?></span></li>
-							<?php endif; ?>
-
-							<?php if (get_field('email', 9)) : ?>
-
-								<li class="d-flex"><span>Email:</span> <span><?php echo get_field('email', 9); ?></span></li>
-							<?php endif; ?>
-
-							<?php if (get_field('telefono', 9)) : ?>
-
-								<li class="d-flex"><span>Phone: </span> <span><?php echo get_field('telefono', 9); ?></span></li>
-							<?php endif; ?>
-						</ul>
-					</div>
-				</div>
-				<?php if (get_field('proyectos_completados', 9)) : ?>
-					<div class="counter-wrap ftco-animate d-flex mt-md-3">
-						<div class="text">
-							<p class="mb-4">
-								<span class="number" data-number="<?php echo get_field('proyectos_completados', 9); ?>">0</span>
-								<span>Project complete</span>
-							</p>
-							<p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
+<?php if (get_field('activar_seccion_acerca')) : ?>
+	<section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
+		<div class="container">
+			<div class="row d-flex no-gutters">
+				<div class="col-md-6 col-lg-6 d-flex">
+					<div class="img-about img d-flex align-items-stretch">
+						<div class="overlay"></div>
+						<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(<?php echo the_field('imagen_de_perfil', 9); ?>">
 						</div>
 					</div>
-				<?php endif; ?>
+				</div>
+				<div class="col-md-6 col-lg-6 pl-md-5 py-5">
+					<div class="row justify-content-start pb-3">
+						<div class="col-md-12 heading-section ftco-animate">
+							<h1 class="big">About</h1>
+							<h2 class="mb-4">About Me</h2>
+
+							<?php if (get_field('biografia', 9)) : ?>
+								<p><?php echo get_field('biografia', 9); ?></p>
+							<?php endif; ?>
+
+
+							<ul class="about-info mt-4 px-md-0 px-2">
+								<?php if (get_field('nombre', 9)) : ?>
+									<li class="d-flex"><span>Nombre:</span> <span><?php echo get_field('nombre', 9); ?></span></li>
+								<?php endif; ?>
+
+								<?php if (get_field('fecha_de_nacimiento', 9)) : ?>
+									<li class="d-flex"><span>Fecha de nacimiento:</span> <span>
+											<?php the_field('fecha_de_nacimiento', 9); ?></span></li>
+								<?php endif; ?>
+
+								<?php if (get_field('direccion', 9)) : ?>
+
+									<li class="d-flex"><span>Address:</span> <span><?php echo get_field('direccion', 9); ?></span></li>
+								<?php endif; ?>
+
+								<?php if (get_field('email', 9)) : ?>
+
+									<li class="d-flex"><span>Email:</span> <span><?php echo get_field('email', 9); ?></span></li>
+								<?php endif; ?>
+
+								<?php if (get_field('telefono', 9)) : ?>
+
+									<li class="d-flex"><span>Phone: </span> <span><?php echo get_field('telefono', 9); ?></span></li>
+								<?php endif; ?>
+							</ul>
+						</div>
+					</div>
+					<?php if (get_field('proyectos_completados', 9)) : ?>
+						<div class="counter-wrap ftco-animate d-flex mt-md-3">
+							<div class="text">
+								<p class="mb-4">
+									<span class="number" data-number="<?php echo get_field('proyectos_completados', 9); ?>">0</span>
+									<span>Project complete</span>
+								</p>
+								<p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
+							</div>
+						</div>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section><!-- Acerca de mi -->
+<?php endif; ?>
+
+
 
 <section class="ftco-section ftco-partner">
 	<div class="container">
@@ -168,28 +172,23 @@
 
 <section class="ftco-section" id="services-section">
 	<div class="container-fluid px-md-5">
-		<div class="row justify-content-center py-5 mt-5">
-			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h1 class="big big-2">Services</h1>
-				<h2 class="mb-4">Services</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+		<?php if (get_field('titulo_servicios') || get_field('descripcion_servicios')) : ?>
+			<div class="row justify-content-center py-5 mt-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<?php if (get_field('titulo_servicios')) : ?>
+						<h1 class="big big-2"><?php echo get_field('titulo_servicios'); ?></h1>
+						<h2 class="mb-4"><?php echo get_field('titulo_servicios'); ?></h2>
+					<?php endif; ?>
+					<?php if (get_field('descripcion_servicios')) : ?>
+						<p><?php echo get_field('descripcion_servicios'); ?></p>
+					<?php endif; ?>
+				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 		<div class="row">
-			<?php
-			// Example argument that defines three posts per page. 
-			$args = array(
-				'posts_per_page' => 3,
-				'post_type' => 'servicio'
-			);
-
-			// Variable to call WP_Query. 
-			$the_query = new WP_Query($args);
-
-			if ($the_query->have_posts()) :
-				// Start the Loop 
-				while ($the_query->have_posts()) : $the_query->the_post();
-			?>
+			<?php $posts = get_field('nuestros_servicios'); ?>
+			<?php if ($posts) : ?>
+				<?php foreach ($posts as $post) : setup_postdata($post); ?>
 					<div class="col-md-4 text-center d-flex ftco-animate">
 						<a href="<?php the_permalink(); ?>" class="services-1 shadow">
 							<span class="icon">
@@ -206,31 +205,31 @@
 							</div>
 						</a>
 					</div>
-			<?php
-				// End the Loop 
-				endwhile;
-			else :
-				// If no posts match this query, output this text. 
-				_e('Sorry, no posts matched your criteria.', 'textdomain');
-			endif;
+				<?php endforeach;
+				wp_reset_postdata(); ?>
 
-			wp_reset_postdata();
-			?>
-
+			<?php endif; ?>
 		</div>
 	</div>
-</section>
+</section><!-- Servicios -->
 
 
 <section class="ftco-section ftco-project" id="projects-section">
 	<div class="container-fluid px-md-0">
-		<div class="row no-gutters justify-content-center pb-5">
-			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h1 class="big big-2">Projects</h1>
-				<h2 class="mb-4">Our Projects</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+		<?php if (get_field('titulo_proyectos') || get_field('descripcion_proyectos')) : ?>
+			<div class="row no-gutters justify-content-center pb-5">
+				<div class="col-md-12 heading-section text-center ftco-animate">
+					<?php if (get_field('titulo_proyectos')) : ?>
+						<h1 class="big big-2"><?php echo get_field('titulo_proyectos'); ?></h1>
+						<h2 class="mb-4"><?php echo get_field('titulo_proyectos'); ?></h2>
+					<?php endif; ?>
+
+					<?php if (get_field('descripcion_proyectos')) : ?>
+						<p><?php echo get_field('descripcion_proyectos'); ?></p>
+					<?php endif; ?>
+				</div>
 			</div>
-		</div>
+		<?php endif; ?>
 		<div class="row no-gutters">
 			<div class="col-md-4">
 				<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(<?php echo get_template_directory_uri(); ?>/images/work-1.jpg);">
@@ -289,7 +288,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section><!-- Proyectos -->
 
 <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
 	<div class="container-fluid px-md-5">
