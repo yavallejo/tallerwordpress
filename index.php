@@ -7,7 +7,7 @@
 				<div class="col-md-6 col-lg-6 d-flex">
 					<div class="img-about img d-flex align-items-stretch">
 						<div class="overlay"></div>
-						<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(<?php echo the_field('imagen_de_perfil', 9); ?>">
+						<div class="img d-flex align-self-stretch align-items-center" style="background-image:url(<?php echo the_field('imagen_de_perfil'); ?>">
 						</div>
 					</div>
 				</div>
@@ -17,43 +17,43 @@
 							<h1 class="big">About</h1>
 							<h2 class="mb-4">About Me</h2>
 
-							<?php if (get_field('biografia', 9)) : ?>
-								<p><?php echo get_field('biografia', 9); ?></p>
+							<?php if (get_field('biografia')) : ?>
+								<p><?php echo get_field('biografia'); ?></p>
 							<?php endif; ?>
 
 
 							<ul class="about-info mt-4 px-md-0 px-2">
-								<?php if (get_field('nombre', 9)) : ?>
-									<li class="d-flex"><span>Nombre:</span> <span><?php echo get_field('nombre', 9); ?></span></li>
+								<?php if (get_field('nombre')) : ?>
+									<li class="d-flex"><span>Nombre:</span> <span><?php echo get_field('nombre'); ?></span></li>
 								<?php endif; ?>
 
-								<?php if (get_field('fecha_de_nacimiento', 9)) : ?>
+								<?php if (get_field('fecha_de_nacimiento')) : ?>
 									<li class="d-flex"><span>Fecha de nacimiento:</span> <span>
-											<?php the_field('fecha_de_nacimiento', 9); ?></span></li>
+											<?php the_field('fecha_de_nacimiento'); ?></span></li>
 								<?php endif; ?>
 
-								<?php if (get_field('direccion', 9)) : ?>
+								<?php if (get_field('direccion')) : ?>
 
-									<li class="d-flex"><span>Address:</span> <span><?php echo get_field('direccion', 9); ?></span></li>
+									<li class="d-flex"><span>Address:</span> <span><?php echo get_field('direccion'); ?></span></li>
 								<?php endif; ?>
 
-								<?php if (get_field('email', 9)) : ?>
+								<?php if (get_field('email')) : ?>
 
-									<li class="d-flex"><span>Email:</span> <span><?php echo get_field('email', 9); ?></span></li>
+									<li class="d-flex"><span>Email:</span> <span><?php echo get_field('email'); ?></span></li>
 								<?php endif; ?>
 
-								<?php if (get_field('telefono', 9)) : ?>
+								<?php if (get_field('telefono')) : ?>
 
-									<li class="d-flex"><span>Phone: </span> <span><?php echo get_field('telefono', 9); ?></span></li>
+									<li class="d-flex"><span>Phone: </span> <span><?php echo get_field('telefono'); ?></span></li>
 								<?php endif; ?>
 							</ul>
 						</div>
 					</div>
-					<?php if (get_field('proyectos_completados', 9)) : ?>
+					<?php if (get_field('proyectos_completados')) : ?>
 						<div class="counter-wrap ftco-animate d-flex mt-md-3">
 							<div class="text">
 								<p class="mb-4">
-									<span class="number" data-number="<?php echo get_field('proyectos_completados', 9); ?>">0</span>
+									<span class="number" data-number="<?php echo get_field('proyectos_completados'); ?>">0</span>
 									<span>Project complete</span>
 								</p>
 								<p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
@@ -71,20 +71,20 @@
 <section class="ftco-section ftco-partner">
 	<div class="container">
 		<div class="row">
-			<?php if (have_rows('companias', 9)) : ?>
+			<?php if (have_rows('companias')) : ?>
 
-				<?php while (have_rows('companias', 9)) : the_row(); ?>
+				<?php while (have_rows('companias')) : the_row(); ?>
 
 					<div class="col-sm ftco-animate">
 						<?php
-						$link = get_sub_field('link_compania', 9);
+						$link = get_sub_field('link_compania');
 						if ($link) :
 							$link_url = $link['url'];
 							$link_title = $link['title'];
 							$link_target = $link['target'] ? $link['target'] : '_self';
 						?>
 							<a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="partner">
-								<img src="<?php the_sub_field('imagen_compania', 9); ?>" class="img-fluid" alt="<?php echo $link_title; ?>">
+								<img src="<?php the_sub_field('imagen_compania'); ?>" class="img-fluid" alt="<?php echo $link_title; ?>">
 							</a>
 						<?php endif; ?>
 
@@ -125,28 +125,28 @@
 					<?php $box = 1; ?>
 					<?php while (have_rows('estudios_educacion')) : the_row(); ?>
 						<div id="page-<?php echo $box; ?>" class="page one">
-							<h2 class="heading"><?php echo get_sub_field('titulo_de_seccion', 9); ?></h2>
+							<h2 class="heading"><?php echo get_sub_field('titulo_de_seccion'); ?></h2>
 
-							<?php if (have_rows('tipo_de_estudio', 9)) : ?>
+							<?php if (have_rows('tipo_de_estudio')) : ?>
 
-								<?php while (have_rows('tipo_de_estudio', 9)) : the_row(); ?>
+								<?php while (have_rows('tipo_de_estudio')) : the_row(); ?>
 
 									<div class="resume-wrap d-flex ftco-animate">
 										<div class="icon d-flex align-items-center justify-content-center">
 											<span class="flaticon-ideas"></span>
 										</div>
 										<div class="text pl-3">
-											<?php if (get_sub_field('fecha', 9)) : ?>
-												<span class="date"><?php echo get_sub_field('fecha', 9); ?></span>
+											<?php if (get_sub_field('fecha')) : ?>
+												<span class="date"><?php echo get_sub_field('fecha'); ?></span>
 											<?php endif; ?>
 
-											<?php if (get_sub_field('instituto', 9)) : ?>
-												<h2><?php echo get_sub_field('instituto', 9); ?></h2>
+											<?php if (get_sub_field('instituto')) : ?>
+												<h2><?php echo get_sub_field('instituto'); ?></h2>
 											<?php endif; ?>
 
-											<?php if (get_sub_field('titulo', 9)) : ?>
+											<?php if (get_sub_field('titulo')) : ?>
 
-												<span class="position"><?php echo get_sub_field('titulo', 9); ?></span>
+												<span class="position"><?php echo get_sub_field('titulo'); ?></span>
 											<?php endif; ?>
 
 											<?php if (get_sub_field('descripcion')) : ?>
