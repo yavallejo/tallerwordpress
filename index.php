@@ -198,8 +198,6 @@ if (have_rows('inicio')) :
 		elseif (get_row_layout() == 'servicios') :
 
 		?>
-
-
 			<section class="ftco-section" id="services-section">
 				<div class="container-fluid px-md-5">
 					<?php if (get_sub_field('titulo_servicios') || get_sub_field('descripcion_servicios')) : ?>
@@ -216,20 +214,21 @@ if (have_rows('inicio')) :
 						</div>
 					<?php endif; ?>
 					<div class="row">
+
 						<?php $posts = get_sub_field('nuestros_servicios'); ?>
 						<?php if ($posts) : ?>
 							<?php foreach ($posts as $post) : setup_postdata($post); ?>
 								<div class="col-md-4 text-center d-flex ftco-animate">
 									<a href="<?php the_permalink(); ?>" class="services-1 shadow">
 										<span class="icon">
-											<?php if (get_sub_field('icono')) : ?>
-												<?php echo get_sub_field('icono'); ?>
+											<?php if (get_field('icono')) : ?>
+												<?php echo get_field('icono'); ?>
 											<?php endif; ?>
 										</span>
 										<div class="desc">
 											<h3 class="mb-5"><?php the_title(); ?></h3>
-											<?php if (get_sub_field('resumen')) : ?>
-												<p><?php echo get_sub_field('resumen'); ?></p>
+											<?php if (get_field('resumen')) : ?>
+												<p><?php echo get_field('resumen'); ?></p>
 											<?php endif; ?>
 
 										</div>
@@ -249,8 +248,6 @@ if (have_rows('inicio')) :
 		// Do something...
 		// Case: Download layout.
 		elseif (get_row_layout() == 'nuestros_proyectos') :
-
-
 		?>
 
 			<section class="ftco-section ftco-project" id="projects-section">
@@ -380,7 +377,6 @@ endif;
 			</div>
 		</div>
 	</div>
-	//
 </section>
 
 <section class="ftco-section" id="blog-section">
@@ -539,9 +535,7 @@ endif;
 						<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
 					</div>
 				</form>
-
 			</div>
-
 			<div class="col-md-6 d-flex">
 				<div class="img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/images/about.jpg);"></div>
 			</div>
