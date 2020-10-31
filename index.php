@@ -1,4 +1,4 @@
-<?php get_header();  ?>
+<?php get_header('home');  ?>
 
 <?php
 
@@ -326,9 +326,141 @@ if (have_rows('inicio')) :
 				</div>
 			</section><!-- Proyectos -->
 
-<?php
+		<?php
 		// Do something...
+		// Case: Download layout.
+		elseif (get_row_layout() == 'estadisticas') :
+		?>
 
+			<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+				<div class="container-fluid px-md-5">
+					<div class="row d-md-flex align-items-center">
+						<?php if (have_rows('estadistica')) : ?>
+
+							<?php while (have_rows('estadistica')) : the_row(); ?>
+
+
+								<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
+									<div class="block-18 shadow">
+										<div class="text">
+											<strong class="number" data-number="<?php the_sub_field('numero_estadistica'); ?>">0</strong>
+											<span><?php the_sub_field('nombre_estadistica'); ?></span>
+										</div>
+									</div>
+								</div>
+
+							<?php endwhile; ?>
+
+						<?php endif; ?>
+					</div>
+				</div>
+			</section>
+
+		<?php
+
+		// Do something...
+		// Case: Download layout.
+		elseif (get_row_layout() == 'blog') :
+		?>
+
+			<section class="ftco-section" id="blog-section">
+				<div class="container">
+					<div class="row justify-content-center mb-5 pb-5">
+						<div class="col-md-7 heading-section text-center ftco-animate">
+							<?php if (get_sub_field('titulo_blog')) : ?>
+								<h1 class="big big-2"><?php echo get_sub_field('titulo_blog'); ?></h1>
+								<h2 class="mb-4"><?php echo get_sub_field('titulo_blog'); ?></h2>
+							<?php endif; ?>
+
+							<?php if (get_sub_field('descripcion_blog')) : ?>
+								<p><?php echo get_sub_field('descripcion_blog'); ?></p>
+							<?php endif; ?>
+						</div>
+					</div>
+					<div class="row d-flex">
+						<?php $posts = get_sub_field('blog_item'); ?>
+						<?php if ($posts) : ?>
+
+							<?php foreach ($posts as $post) : setup_postdata($post); ?>
+								<div class="col-md-4 d-flex ftco-animate">
+									<div class="blog-entry justify-content-end">
+										<?php
+										$featured_img_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+										if ($featured_img_url === false)
+										{
+											$featured_img_url = get_template_directory_uri() . '/images/img-not-found.png';
+										}
+										?>
+										<a href="<?php the_permalink(); ?>" class="block-20" style="background-image: url('<?php echo $featured_img_url; ?>">
+										</a>
+										<div class="text mt-3 float-right d-block">
+											<h3 class="heading">
+												<a href="<?php the_permalink(); ?>">
+													<?php the_title(); ?>
+												</a>
+											</h3>
+											<div class="d-flex align-items-center mb-3 meta">
+												<p class="mb-0">
+													<span class="mr-2">Sept. 12, 2019</span>
+													<a href="#" class="mr-2">Admin</a>
+													<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+												</p>
+											</div>
+											<?php the_excerpt(); ?>
+										</div>
+									</div>
+								</div>
+							<?php endforeach;
+							wp_reset_postdata(); ?>
+
+						<?php endif; ?>
+
+
+
+					</div>
+				</div>
+
+			</section>
+		<?php
+
+		// Do something...
+		// Case: Download layout.
+		elseif (get_row_layout() == 'cta') :
+		?>
+
+			<?php
+			$img_cta = get_sub_field('imagen_de_fondo_cta');
+
+			?>
+			<section class="ftco-section ftco-hireme img" style="background-image: url(<?php echo $img_cta['url']; ?>">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-7 ftco-animate text-center">
+							<?php if (get_sub_field('titulo_cta')) : ?>
+								<h2><?php echo get_sub_field('titulo_cta'); ?></h2>
+							<?php endif; ?>
+
+							<?php if (get_sub_field('descripcion_cta')) : ?>
+								<p><?php echo get_sub_field('descripcion_cta'); ?></p>
+							<?php endif; ?>
+
+							<?php
+							$link = get_sub_field('url_cta');
+							if ($link) :
+								$link_url = $link['url'];
+								$link_title = $link['title'];
+								$link_target = $link['target'] ? $link['target'] : '_self';
+							?>
+								<p class="mb-0"><a class="btn btn-primary py-3 px-5" href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a></p>
+							<?php endif; ?>
+
+						</div>
+					</div>
+				</div>
+
+			</section>
+<?php
 		endif;
 
 	// End loop.
@@ -340,124 +472,9 @@ else :
 endif;
 ?>
 
-<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
-	<div class="container-fluid px-md-5">
-		<div class="row d-md-flex align-items-center">
-			<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 shadow">
-					<div class="text">
-						<strong class="number" data-number="100">0</strong>
-						<span>Awards</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 shadow">
-					<div class="text">
-						<strong class="number" data-number="1200">0</strong>
-						<span>Complete Projects</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 shadow">
-					<div class="text">
-						<strong class="number" data-number="1200">0</strong>
-						<span>Happy Customers</span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
-				<div class="block-18 shadow">
-					<div class="text">
-						<strong class="number" data-number="500">0</strong>
-						<span>Cups of coffee</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
-<section class="ftco-section" id="blog-section">
-	<div class="container">
-		<div class="row justify-content-center mb-5 pb-5">
-			<div class="col-md-7 heading-section text-center ftco-animate">
-				<h1 class="big big-2">Blog</h1>
-				<h2 class="mb-4">Our Blog</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-			</div>
-		</div>
-		<div class="row d-flex">
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="single.html" class="block-20" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/image_1.jpg');">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-						<div class="d-flex align-items-center mb-3 meta">
-							<p class="mb-0">
-								<span class="mr-2">Sept. 12, 2019</span>
-								<a href="#" class="mr-2">Admin</a>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-							</p>
-						</div>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-					<a href="single.html" class="block-20" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/image_2.jpg');">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-						<div class="d-flex align-items-center mb-3 meta">
-							<p class="mb-0">
-								<span class="mr-2">Sept. 12, 2019</span>
-								<a href="#" class="mr-2">Admin</a>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-							</p>
-						</div>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry">
-					<a href="single.html" class="block-20" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/image_3.jpg');">
-					</a>
-					<div class="text mt-3 float-right d-block">
-						<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-						<div class="d-flex align-items-center mb-3 meta">
-							<p class="mb-0">
-								<span class="mr-2">Sept. 12, 2019</span>
-								<a href="#" class="mr-2">Admin</a>
-								<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-							</p>
-						</div>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 
-</section>
 
-<section class="ftco-section ftco-hireme img" style="background-image: url(<?php echo get_template_directory_uri(); ?>/images/bg_1.jpg)">
-	<div class="overlay"></div>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-7 ftco-animate text-center">
-				<h2>I'm <span>Available</span> for freelancing</h2>
-				<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-				<p class="mb-0"><a href="#" class="btn btn-primary py-3 px-5">Hire me</a></p>
-			</div>
-		</div>
-	</div>
-
-</section>
 
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 	<div class="container">
